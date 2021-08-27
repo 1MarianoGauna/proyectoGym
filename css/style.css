@@ -48,6 +48,7 @@ body{
 }
 
 .myButton:hover{
+    color: white;
     background-color: #4CAF50;
 
 }
@@ -69,21 +70,33 @@ h1{
     border-color: #4CAF50;
     border-radius: 8%;
     width: 10vh;
-    height: 4vh;
+    height: 5vh;
+}
+.sectionButton{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3%;
+}
+.button-checkout:hover{
+    color: white;
+    background-color: #4CAF50;
 }
 .headerNav__nav-item{
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
     font-size: 2vh;
-    width: 15vh;
+    width: 20vh;
 }
-a{
+.itemA{
     text-decoration: none;
     color: black;
+    width: 8%;
 }
-a:hover{
-    color: #f8412c;
+.itemA:hover{
+    color: white;
+    background-color: #f8412c;
+    border-radius: 8px;
     transition: 0.3s;
 }
 
@@ -104,6 +117,7 @@ a:hover{
     width: 30%;
     padding-top: 3%;
     margin: auto;
+    padding-bottom: 5%;
 }
 h2{
     padding-top: 1%;
@@ -136,9 +150,21 @@ i:hover{
     transform: scale(1.2);
     transition: 0.3s;
 }
-
-@media screen and (max-width:700px){
+@media screen and (min-width:240px){
     .navFooter__menu{
         font-size: 50px;
+    }
+    .button-checkout{
+        width: 10vh;
+        height: 10vh;
+    }
+}
+@media screen and (max-width:700px) and (orientation: landscape){
+    .navFooter__menu{
+        font-size: 50px;
+    }
+    .button-checkout{
+        width: 10vh;
+        height: 10vh;
     }
 }
