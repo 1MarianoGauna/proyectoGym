@@ -66,18 +66,17 @@ h1{
     flex-wrap: wrap;
     list-style: none;
 }
-.button-checkout{
+.buttonCheckout{
     border-color: #4CAF50;
+    font-size: 1.5em;
     border-radius: 7%;
-    width: 10vh;
-    height: 5vh;
 }
 .sectionButton{
     display: flex;
     justify-content: flex-end;
     padding-right: 3%;
 }
-.button-checkout:hover{
+.buttonCheckout:hover{
     color: white;
     background-color: #4CAF50;
 }
@@ -154,7 +153,7 @@ i:hover{
     .navFooter__menu{
         font-size: 50px;
     }
-    .button-checkout{
+    .buttonCheckout{
         width: 10vh;
         height: 10vh;
     }
@@ -163,7 +162,7 @@ i:hover{
     .navFooter__menu{
         font-size: 50px;
     }
-    .button-checkout{
+    .buttonCheckout{
         width: 10vh;
         height: 10vh;
     }

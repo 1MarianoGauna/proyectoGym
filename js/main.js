@@ -1,77 +1,61 @@
-/* class Carrito{
-    constructor(tipo, precio){
+const myProductos = [];
+const myProductosTotal = [];
+class Producto{
+    constructor(id, tipo, precio, image){
+        this.id = id
         this._tipo = tipo;
         this._precio = parseInt(precio);
+        this._image = image;
     }
-    sumaIva (){
-        this._precio = this._precio * 1.21
+    createCard(){
+        const nuevoArticle = document.createElement('article');
+        nuevoArticle.setAttribute("class", "miSection__article");
+        nuevoArticle.innerHTML = `<img src='${this._image}'/>
+        <h3 class="precio" id="precio">${this._precio}</h3>
+        <b class="tipo">${this._tipo}</b>
+        <button id="${this.id}" class="myButton">Agregar</button>`;
+        return nuevoArticle
     }
-    getElements(){
-        return `El tipo de <strong>producto</strong> es: ${this._tipo}, y el <strong>precio</strong> con <strong>IVA</strong> es de ${this._precio}`
-    }
-    get precio(){
-        return this._precio
-    }
-    get tipo(){
-        return this._tipo
-    }
-}
-
-const productos = [];
-let total = 0;
-function agregarProductos(){
-    let ingresar = prompt('¿Queres acceder al carrito de compras? si/no');
-    if (ingresar.toLowerCase() == "si"){
-        let preguntar = prompt("¿Deseas agregar un nuevo producto al Carrito?")
-        while (preguntar.toLowerCase() !== "no"){
-        var tipo = prompt('Ingrese el producto a comprar');
-        var precio = prompt('Ingrese el precio del producto');
-        productos.push(new Carrito(tipo, precio));
-        preguntar = prompt("¿Deseas agregar un nuevo producto al Carrito?");
+    addCart() {
+        document.getElementById(`${this.id}`).addEventListener("click", (tipo, precio) => {
+            myProductosTotal.push(this._precio)
+            let total = myProductosTotal.reduce((a, b) => a + b, 0);
+            myProductos.push(JSON.stringify(new Producto(this.id, this._tipo, this._precio)))
+            localStorage.setItem('miProductos', myProductos)
+            localStorage.setItem('precioTotal', total)
+            $('#checkout').html(`${total}`);
+        });
     }
 }
-else{
-    alert(`Usted ingreso ${ingresar}, por lo tanto no accede al carrito`);
-}
-}
 
-
-
-
-
-
-
-let miCarro = document.getElementById('carro')
-miCarro.addEventListener('click', agregarProductos);
-
-let seccion = document.getElementsByTagName('section')[0];
-let miProducto = document.getElementById('misProductos')
-miProducto.addEventListener('click', verProductos);
-
-function verProductos(){
-    for (const x of productos){
-        let art = document.createElement('p')
-        x.sumaIva()
-        art.innerHTML= `
-        <p>${x.getElements()}<br></p>
-        <p>El precio total es de: ${total += x.precio}</p>`
-        seccion.appendChild(art)
+const productos = [
+    new Producto("1", "mancuerna simple", "3000", "../img/imagen1.jpg"),
+    new Producto("2", "pesa doble", "5000", "../img/imagen2.jpg"),
+    new Producto("3", "Pesa Rusa", "6000", "../img/imagen3.jpg"),
+    new Producto("4", "Pesa para Armar", "2000", "../img/imagen4.jpg"),
+    new Producto("5", "Gimnasio Multifuncion", "4500", "../img/imagen5.jpg"),
+    new Producto("6", "Caminadora", "6500", "../img/imagen6.jpg"),
+    new Producto("7", "Banco multifuncion", "9000", "../img/imagen7.jpg"),
+    new Producto("8", "Banco abdominales", "13000", "../img/imagen9.jpg")
+];
+const miSection = document.getElementById('miSection');
+for (let i = 0; i < productos.length; i++){
+    const newCarrito = productos[i];
+    miSection.appendChild(newCarrito.createCard());
+    newCarrito.addCart()
+};
+$(document).ready( () => {
+    for (let i = 0; i < localStorage.length; i++){
+        $('#checkout').html(`${localStorage.getItem('precioTotal')}`)
     }
-}; */
+});
+$('#checkout').click( () => {
+    $('#bodyModal').prepend(`
+    <h3>Estos son tus productos: </h3>
+    <p>${localStorage.getItem('miProductos')}</p>
+    <h4>El total es de: $${localStorage.getItem('precioTotal')}</h4>`)
+})
 
-let productos = [];
-let total = 0;
-
-
-function add(producto, precio){
-    console.log(producto, precio);
-    localStorage.setItem(producto, precio)
-    productos.push(producto);
-    total = total + precio;
-    document.getElementById('checkout').innerHTML = `Pagar $${total}`
-}
-
-
-function pay(){
-    window.alert(productos.join(", \n"));
-}
+$('#submit').click( () =>{
+    localStorage.clear()
+})

@@ -28,67 +28,32 @@
                 <li class="headerNav__nav-item"><a class="itemA" href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
-        <!--<section>
-        <article id="articulos">
-            <h2>Articulos</h2>
-            <button id="carro">Carritos</button>
-            <button id="misProductos">Mis productos son:</button>
-        </article>
-    </section>-->
     </header>
     <h2>Nuestros Productos</h2>
     <section class="sectionButton">
-        <button id="checkout" class="button-checkout" onclick="pay()">PAGAR</button>
+        <button type="button" id= 'checkout' class="buttonCheckout" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Confirmar compra</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id='bodyModal'>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <form action="">
+                  <button type="submit" class="btn btn-primary" id='submit'>Confirmar la compra</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
     </section>
-    <section class="miSection">
-        <article class="miSection__article">
-            <img src="../img/imagen1.jpg" alt="mancuernas">
-            <h3>$3000</h3>
-            <b>Pesa simple</b>
-            <button id="myButton" class="myButton" onclick="add('Mancuerna simple', 3000)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen2.jpg" alt="mancuernas">
-            <h3>$5000</h3>
-            <b>Pesa doble</b>
-            <button id="myButton" class="myButton" onclick="add('Mancuerna doble', 5000)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen3.jpg" alt="mancuernas">
-            <h3>$6000</h3>
-            <b>Pesa Rusa</b>
-            <button id="myButton" class="myButton" onclick="add('Pesa Rusa', 6000)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen4.jpg" alt="mancuernas">
-            <h3>$2000</h3>
-            <b>Pesa para armar</b>
-            <button id="myButton" class="myButton" onclick="add('Armado de mancuernas', 2000)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen5.jpg" alt="mancuernas">
-            <h3>$4500</h3>
-            <b>Gimnasio multifunción</b>
-            <button id="myButton" class="myButton" onclick="add('Maquina completa', 4500)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen6.jpg" alt="mancuernas">
-            <h3>$6500</h3>
-            <b>Caminadora</b>
-            <button id="myButton" class="myButton" onclick="add('Caminador', 6500)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen7.jpg" alt="mancuernas">
-            <h3>$9000</h3>
-            <b>Banco multifuncional</b>
-            <button id="myButton" class="myButton" onclick="add('MultiGimnasio', 9000)">Agregar</button>
-        </article>
-        <article class="miSection__article">
-            <img src="../img/imagen9.jpg" alt="mancuernas">
-            <h3>13000</h3>
-            <b>Banco abdominales</b>
-            <button id="myButton" class="myButton" onclick="add('Maquina abdominales', 13000)">Agregar</button>
-        </article>
+    <section class="miSection" id="miSection">
     </section>
     <hr>
     <footer>
@@ -106,14 +71,15 @@
     </footer>
 
 
-    <!------------JAVASCRIPT--->
-    <script src="../js/main.js"></script>
+    <!---------------Bootstrap----------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
     <!--------------JQUERY--------------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
+    <!--------------JAVASCRIPT---------->
+    <script src="../js/main.js"></script>
 
 </body>
 
