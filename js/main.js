@@ -1,13 +1,19 @@
 const myProductos = [];
 const myProductosTotal = [];
-class Producto{
-    constructor(id, tipo, precio, image){
-        this.id = id
+class Producto {
+    constructor(id, tipo, precio, image) {
+        this.id = parseInt(id);
         this._tipo = tipo;
         this._precio = parseInt(precio);
         this._image = image;
     }
-    createCard(){
+    get tipo() {
+        return this._tipo
+    }
+    get precio() {
+        return this._precio
+    }
+    createCard() {
         const nuevoArticle = document.createElement('article');
         nuevoArticle.setAttribute("class", "miSection__article");
         nuevoArticle.innerHTML = `<img src='${this._image}'/>
@@ -20,10 +26,11 @@ class Producto{
         document.getElementById(`${this.id}`).addEventListener("click", (tipo, precio) => {
             myProductosTotal.push(this._precio)
             let total = myProductosTotal.reduce((a, b) => a + b, 0);
-            myProductos.push(JSON.stringify(new Producto(this.id, this._tipo, this._precio)))
-            localStorage.setItem('miProductos', myProductos)
+            myProductos.push(new Producto(this.id, this._tipo, this._precio));
+            localStorage.setItem("miProductos", JSON.stringify(myProductos))
             localStorage.setItem('precioTotal', total)
             $('#checkout').html(`${total}`);
+            $('#bodyModalChildren2').html(`${total}`)
         });
     }
 }
@@ -39,23 +46,40 @@ const productos = [
     new Producto("8", "Banco abdominales", "13000", "../img/imagen9.jpg")
 ];
 const miSection = document.getElementById('miSection');
-for (let i = 0; i < productos.length; i++){
+for (let i = 0; i < productos.length; i++) {
     const newCarrito = productos[i];
     miSection.appendChild(newCarrito.createCard());
     newCarrito.addCart()
 };
-$(document).ready( () => {
-    for (let i = 0; i < localStorage.length; i++){
+$(document).ready(() => {
+    for (let i = 0; i < localStorage.length; i++) {
         $('#checkout').html(`${localStorage.getItem('precioTotal')}`)
+        $('#bodyModalChildren2').html(`${localStorage.getItem('precioTotal')}`)
     }
 });
-$('#checkout').click( () => {
-    $('#bodyModal').prepend(`
-    <h3>Estos son tus productos: </h3>
-    <p>${localStorage.getItem('miProductos')}</p>
-    <h4>El total es de: $${localStorage.getItem('precioTotal')}</h4>`)
+
+$('#checkout').click(()=> {
+    const almacenados = JSON.parse(localStorage.getItem("miProductos"));
+    const productos = [];
+    for(const objeto of almacenados){
+        productos.push(new Producto(objeto.id, objeto._tipo, objeto._precio))
+    }
+    $('#bodyModalChildren').children().remove();
+    if($('#bodyModalChildren').children().length<1){
+        for(const object of productos){
+            $('#bodyModalChildren').append(`<p>${object.tipo}</p>`)
+    }
+    }
+})
+$('#submit').click(() => {
+    localStorage.clear()
 })
 
-$('#submit').click( () =>{
+$('#buttonBorrar').click(()=>{
+    myProductos.splice(0, myProductos.length)
+    myProductosTotal.splice(0, myProductosTotal.length)
     localStorage.clear()
+    $('#bodyModalChildren').children().remove();
+    ($('#checkout').html(`${localStorage.getItem('precioTotal')}`).children().lenght)
+    $('#bodyModalChildren2').html(`${localStorage.getItem('precioTotal')}`).children().remove()
 })

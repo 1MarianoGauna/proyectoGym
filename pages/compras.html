@@ -31,27 +31,38 @@
     </header>
     <h2>Nuestros Productos</h2>
     <section class="sectionButton">
-        <button type="button" id= 'checkout' class="buttonCheckout" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" id='checkout' class="buttonCheckout" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
             <i class="fas fa-shopping-cart"></i>
-          </button>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Confirmar compra</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmar compra</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id='bodyModal'>
+                        <h3>Estos son tus productos</h3>
+                        <div id='bodyModalChildren'>
+                        </div>
+                        <hr>
+                        <h4>Y un total de</h4>
+                        <hr>
+                        <div id='bodyModalChildren2'>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id='buttonBorrar' type="button" class='btn btn-danger'>Borrar todo</button>
+                        <button id='button' type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <form action="">
+                            <button type="submit" class="btn btn-primary" id='submit'>Confirmar la compra</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body" id='bodyModal'>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <form action="">
-                  <button type="submit" class="btn btn-primary" id='submit'>Confirmar la compra</button>
-                  </form>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
     </section>
     <section class="miSection" id="miSection">
     </section>
@@ -73,8 +84,8 @@
 
     <!---------------Bootstrap----------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-    crossorigin="anonymous"></script>
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
     <!--------------JQUERY--------------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

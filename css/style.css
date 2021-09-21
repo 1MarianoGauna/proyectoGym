@@ -106,9 +106,9 @@ h1{
     align-items: center;
     font-size: 100%;
 }
-.loremArticle:hover{
+/*.loremArticle:hover{
     box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
-}
+}*/
 
 .formControl{
     display: flex;
@@ -129,9 +129,12 @@ h2{
     float: left;
 }
 .loremArticle{
-    padding: 1%;
+    padding: 24px;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
+footer{
+    background-color: #D5D5D5;
+}
 .navFooter__menu{
     list-style: none;
     display: flex;
