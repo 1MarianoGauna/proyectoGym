@@ -57,7 +57,6 @@ $(document).ready(() => {
         $('#bodyModalChildren2').html(`${localStorage.getItem('precioTotal')}`)
     }
 });
-
 $('#checkout').click(()=> {
     const almacenados = JSON.parse(localStorage.getItem("miProductos"));
     const productos = [];
@@ -82,4 +81,6 @@ $('#buttonBorrar').click(()=>{
     $('#bodyModalChildren').children().remove();
     ($('#checkout').html(`${localStorage.getItem('precioTotal')}`).children().lenght)
     $('#bodyModalChildren2').html(`${localStorage.getItem('precioTotal')}`).children().remove()
+    $('#bodyModalChildren2').html(`${0}`)
+    $('#checkout').html(`0`)
 })
