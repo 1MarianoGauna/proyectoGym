@@ -41,8 +41,9 @@ body{
 }
 
 .myButton{
-    width: 10vh;
-    height: 4vh;
+    padding: 4px 8px;
+    width: auto;
+    height: auto;
     border-radius: 30px;
     border-color: #4CAF50;
 }
